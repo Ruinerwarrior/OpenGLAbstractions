@@ -421,5 +421,10 @@ MigrationBackup/
 ### Ninja ###
 .ninja_deps
 .ninja_log
+*.ninja
+
+reply/
+client-MicrosoftVS/
+*VSInheritEnvironments.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/cmake,c++,visualstudio,visualstudiocode
