@@ -89,7 +89,7 @@ namespace opengl
 
 	public:
 		Texture();
-		Texture(const int color);
+		Texture(const int color, const int width = 1, const int height = 1);
 		Texture(const char* imagePath);
 		Texture(const Target target, const int level, const InteralFormat internalFormat, const int width, int height, const int border, const Format format, const Type type, void* data);
 		~Texture();
