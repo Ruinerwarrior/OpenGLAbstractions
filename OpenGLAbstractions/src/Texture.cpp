@@ -35,7 +35,7 @@ namespace opengl
 		stbi_image_free(data);
 	}
 	
-	Texture::Texture(const Target target, const int level, const InteralFormat internalFormat, const int width, int height, const int border, const Format format, const Type type, void* data) 
+	Texture::Texture(const Target target, const int level, const InteralFormat internalFormat, const int width, int height, const int border, const Format format, const PixelType type, void* data)
 		: width(width), height(height)
 	{
 		glGenTextures(1, &id);
