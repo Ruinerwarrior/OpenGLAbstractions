@@ -11,7 +11,6 @@ set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/includes")
 set(EXTERN_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/extern")
 
 list (APPEND SOURCE_FILES
-	"${SRC_DIR}/glad.c"
 	"${SRC_DIR}/VertexBuffer.cpp"
 	"${SRC_DIR}/IndexBuffer.cpp"
 	"${SRC_DIR}/VertexArray.cpp"
@@ -19,12 +18,12 @@ list (APPEND SOURCE_FILES
 	"${SRC_DIR}/Shader.cpp"
 )
 
+message(${CMAKE_CURRENT_LIST_DIR})
 
 # Add source to this project's library.
-add_library(OpenGLAbstractions ${SOURCE_FILES})
+add_library(OpenGLAbstractions STATIC ${SOURCE_FILES})
 
-target_include_directories(OpenGLAbstractions INTERFACE ${INCLUDE_DIR})
-target_include_directories(OpenGLAbstractions PRIVATE "${INCLUDE_DIR}/glad")
+target_include_directories(OpenGLAbstractions INTERFACE "${CMAKE_CURRENT_LIST_DIR}/includes")
 
 # Add dependencies
 
@@ -35,15 +34,23 @@ find_package(OpenGL REQUIRED)
 target_link_libraries(OpenGLAbstractions ${OpenGL})
 
 #----------------------------------------------
+# ADD GLAD LIBRARY DEPENDENCY
+#----------------------------------------------
+target_link_libraries(OpenGLAbstractions glad)
+target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/glad")
+
+#----------------------------------------------
 # ADD STB_IMAGE LIBRARY DEPENDENCY
 #----------------------------------------------
-add_library("stb_image" "${EXTERN_DIR}/stbimage/stb_image.cpp")
-target_include_directories("stb_image" PRIVATE "${EXTERN_DIR}/stb_image")
-target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/stb_image")
-target_link_libraries(OpenGLAbstractions "stb_image" "${CMAKE_DL_LIBS}")
-
-#---------------------------------------------
-# ADD GLM LIBRARY DEPENDENCY
-# --------------------------------------------
-add_subdirectory("${EXTERN_DIR}/glm")
-target_include_directories(OpenGLAbstractions PRIVATE "${EXTERN_DIR}")
+target_link_libraries(OpenGLAbstractions stbimage)
+target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}")
+#add_library("stb_image" "${EXTERN_DIR}/stbimage/stb_image.cpp")
+#target_include_directories("stb_image" PRIVATE "${EXTERN_DIR}/stb_image")
+#target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/stb_image")
+#target_link_libraries(OpenGLAbstractions "stb_image" "${CMAKE_DL_LIBS}")
+#
+##---------------------------------------------
+## ADD GLM LIBRARY DEPENDENCY
+## --------------------------------------------
+#add_subdirectory("${EXTERN_DIR}/glm")
+#target_include_directories(OpenGLAbstractions PRIVATE "${EXTERN_DIR}")
