@@ -1,7 +1,5 @@
 #include "../includes/IndexBuffer.h"
 
-#include <glad/glad.h>
-
 namespace opengl
 {
 	IndexBuffer::IndexBuffer(const int size, Usage usage)

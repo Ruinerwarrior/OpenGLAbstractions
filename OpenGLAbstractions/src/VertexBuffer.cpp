@@ -1,5 +1,4 @@
 #include "../includes/VertexBuffer.h"
-#include <glad/glad.h>
 
 namespace opengl
 {

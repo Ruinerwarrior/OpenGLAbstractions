@@ -1,5 +1,5 @@
 #ifndef OPENGLABSTRACTIONS_TEXTURE_H_
-#define OPENGLABSTRACTIONS_TEXURE_H_
+#define OPENGLABSTRACTIONS_TEXTURE_H_
 
 #include <glad/glad.h>
 
@@ -111,5 +111,3 @@ namespace opengl
 }
 
 #endif // !OPENGLABSTRACTIONS_TEXTURE_H_
-
-#include <glad/glad.h>

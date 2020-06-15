@@ -1,6 +1,5 @@
 #include "../includes/Texture.h"
 
-#include <glad/glad.h>
 #include <stbimage/stb_image.h>
 
 namespace opengl
