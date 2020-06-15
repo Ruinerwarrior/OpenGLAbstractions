@@ -6,11 +6,12 @@ cmake_minimum_required (VERSION 3.8)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SRC_DIR "./src")
-set(INCLUDE_DIR "./includes")
-set(EXTERN_DIR "./extern")
+set(SRC_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/src")
+set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/includes")
+set(EXTERN_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/extern")
 
 list (APPEND SOURCE_FILES
+	"${SRC_DIR}/glad.c"
 	"${SRC_DIR}/VertexBuffer.cpp"
 	"${SRC_DIR}/IndexBuffer.cpp"
 	"${SRC_DIR}/VertexArray.cpp"
@@ -23,6 +24,7 @@ list (APPEND SOURCE_FILES
 add_library(OpenGLAbstractions ${SOURCE_FILES})
 
 target_include_directories(OpenGLAbstractions INTERFACE ${INCLUDE_DIR})
+target_include_directories(OpenGLAbstractions PRIVATE "${INCLUDE_DIR}/glad")
 
 # Add dependencies
 
@@ -31,14 +33,6 @@ target_include_directories(OpenGLAbstractions INTERFACE ${INCLUDE_DIR})
 #----------------------------------------------
 find_package(OpenGL REQUIRED)
 target_link_libraries(OpenGLAbstractions ${OpenGL})
-
-#----------------------------------------------
-# ADD GLAD LIBRARY DEPENDENCY
-#----------------------------------------------
-add_library("glad" "${EXTERN_DIR}/glad/glad.c")
-target_include_directories("glad" PRIVATE "${EXTERN_DIR}/glad")
-target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/glad")
-target_link_libraries(OpenGLAbstractions "glad" "${CMAKE_DL_LIBS}")
 
 #----------------------------------------------
 # ADD STB_IMAGE LIBRARY DEPENDENCY

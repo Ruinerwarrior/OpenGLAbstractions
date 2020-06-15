@@ -1,7 +1,7 @@
 #ifndef OPENGLABSTRATCTIONS_VERTEXBUFFER_H_
 #define OPENGLABSTRATCTIONS_VERTEXBUFFER_H_
 
-#include "../extern/glad/glad/glad.h"
+#include <glad/glad.h>
 
 namespace opengl
 {

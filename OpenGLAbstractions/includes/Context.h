@@ -1,7 +1,7 @@
 #ifndef OPENGLABSTRACTIONS_CONTEXT_H_
 #define OPENGLABSTRACTIONS_CONTEXT_H_
 
-#include "../extern/glad/glad/glad.h"
+#include <glad/glad.h>
 
 namespace opengl
 {
