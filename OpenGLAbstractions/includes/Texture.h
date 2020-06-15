@@ -1,7 +1,7 @@
 #ifndef OPENGLABSTRACTIONS_TEXTURE_H_
 #define OPENGLABSTRACTIONS_TEXURE_H_
 
-#include <glad/glad.h>
+#include "../extern/glad/glad/glad.h"
 
 namespace opengl
 {
