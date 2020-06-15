@@ -7,6 +7,7 @@ namespace opengl
 {
 	class Context 
 	{
+	public:
 		enum Settings
 		{
 			SETTINGS_BLEND = GL_BLEND,

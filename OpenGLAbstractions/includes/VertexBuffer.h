@@ -7,6 +7,7 @@ namespace opengl
 {
 	class VertexBuffer
 	{
+	public:
 		enum Usage
 		{
 			USAGE_STATIC_DRAW = GL_STATIC_DRAW,

@@ -7,6 +7,7 @@ namespace opengl
 {
 	class VertexArray
 	{
+	public:
 		enum Type
 		{
 			TYPE_INT = GL_INT,
