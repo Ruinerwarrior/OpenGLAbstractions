@@ -26,4 +26,9 @@ namespace opengl
 	{
 		glDisable(setting);
 	}
+
+	void Context::draw(const Mode mode, const unsigned int count, const Type type, const void* offset)
+	{
+		glDrawElements(mode, count, type, offset);
+	}
 }
