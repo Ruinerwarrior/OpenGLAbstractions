@@ -1,24 +1,24 @@
-#include "../includes/opengl_abstractions/Context.h"
+#include "../includes/opengl_abstractions/context.h"
 
 #include <string>
 
 namespace opengl
 {
-	void APIENTRY glDebugOutput(GLenum source,
-		GLenum type,
-		GLuint id,
-		GLenum severity,
-		GLsizei length,
-		const GLchar* message,
-		const void* userParam)
+	void APIENTRY gl_debug_output(GLenum p_Source,
+		GLenum p_Type,
+		GLuint p_Id,
+		GLenum p_Severity,
+		GLsizei p_Length,
+		const GLchar* p_Message,
+		const void* p_UserParam)
 	{
 		// ignore non-significant error/warning codes
-		if (id == 131169 || id == 131185 || id == 131218 || id == 131204) return;
+		if (p_Id == 131169 || p_Id == 131185 || p_Id == 131218 || p_Id == 131204) return;
 
 		std::string log = "---------------\n";
 		log += "Debug message %i: %s\n";
 
-		switch (source)
+		switch (p_Source)
 		{
 		case GL_DEBUG_SOURCE_API:             log += "Source: API\n"; break;
 		case GL_DEBUG_SOURCE_WINDOW_SYSTEM:   log += "Source: Window System\n"; break;
@@ -28,7 +28,7 @@ namespace opengl
 		case GL_DEBUG_SOURCE_OTHER:           log += "Source: Other\n"; break;
 		}
 
-		switch (type)
+		switch (p_Type)
 		{
 		case GL_DEBUG_TYPE_ERROR:               log += "Type: Error\n"; break;
 		case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: log += "Type: Deprecated Behaviour\n"; break;
@@ -41,7 +41,7 @@ namespace opengl
 		case GL_DEBUG_TYPE_OTHER:               log += "Type: Other\n"; break;
 		}
 
-		switch (severity)
+		switch (p_Severity)
 		{
 		case GL_DEBUG_SEVERITY_HIGH:         log += "Severity: high\n"; break;
 		case GL_DEBUG_SEVERITY_MEDIUM:       log += "Severity: medium\n"; break;
@@ -50,50 +50,50 @@ namespace opengl
 		}
 		log += "\n";
 		
-		printf(log.c_str(), id, message);
+		printf(log.c_str(), p_Id, p_Message);
 	}
 
-	void Context::clear(const int clear)
+	void context::clear(const int p_Clear)
 	{
-		glClear(clear);
+		glClear(p_Clear);
 	}
 
-	void Context::clear(const Clear clear)
+	void context::clear(const mask p_Clear)
 	{
-		glClear(clear);
+		glClear(p_Clear);
 	}
 
-	void Context::clearColor(const float r, const float g, const float b, const float a)
+	void context::clear_color(const float p_R, const float p_G, const float p_B, const float p_A)
 	{
-		glClearColor(r, g, b, a);
+		glClearColor(p_R, p_G, p_B, p_A);
 	}
 
-	void Context::setViewPort(const unsigned int x, const unsigned int y, const unsigned int width, const unsigned int height)
+	void context::set_viewport(const unsigned int p_X, const unsigned int p_Y, const unsigned int p_Width, const unsigned int p_Height)
 	{
-		glViewport(x, y, width, height);
+		glViewport(p_X, p_Y, p_Width, p_Height);
 	}
 
-	void Context::enable(const Settings setting)
+	void context::enable(const settings p_Setting)
 	{
-		glEnable(setting);
+		glEnable(p_Setting);
 	}
 
-	void Context::disable(const Settings setting)
+	void context::disable(const settings p_Setting)
 	{
-		glDisable(setting);
+		glDisable(p_Setting);
 	}
 
-	void Context::blendFunc(const Factor sfactor, const Factor dfactor)
+	void context::blend_func(const factor p_Sfactor, const factor p_Dfactor)
 	{
-		glBlendFunc(sfactor, dfactor);
+		glBlendFunc(p_Sfactor, p_Dfactor);
 	}
 
-	void Context::draw(const Mode mode, const unsigned int count, const Type type, const void* offset)
+	void context::draw(const mode p_Mode, const unsigned int p_Count, const type p_Type, const void* p_Offset)
 	{
-		glDrawElements(mode, count, type, offset);
+		glDrawElements(p_Mode, p_Count, p_Type, p_Offset);
 	}
 
-	void Context::enableDebug()
+	void context::enable_debug()
 	{
 		GLint flags;
 		glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
@@ -102,7 +102,7 @@ namespace opengl
 		{
 			glEnable(GL_DEBUG_OUTPUT);
 			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-			glDebugMessageCallback(glDebugOutput, nullptr);
+			glDebugMessageCallback(gl_debug_output, nullptr);
 			glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
 		}
 	}

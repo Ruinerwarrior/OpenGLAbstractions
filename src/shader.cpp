@@ -1,4 +1,4 @@
-#include "../includes/opengl_abstractions/Shader.h"
+#include "../includes/opengl_abstractions/shader.h"
 
 #include <glad/glad.h>
 
@@ -10,69 +10,69 @@
 
 namespace opengl
 {
-	Shader::Shader(const char* vertPath, const char* fragPath)
+	shader::shader(const char* p_VertPath, const char* p_FragPath)
 	{
-		createShader(vertPath, fragPath);
+		create_shader(p_VertPath, p_FragPath);
 	}
 
-	Shader::~Shader()
+	shader::~shader()
 	{
 		glUseProgram(0);
-		glDeleteProgram(id);
+		glDeleteProgram(m_Id);
 	}
 
-	void Shader::use() const
+	void shader::use() const
 	{
-		glUseProgram(id);
+		glUseProgram(m_Id);
 	}
 
-	void Shader::unUse() const
+	void shader::un_use() const
 	{
 		glUseProgram(0);
 	}
 
-	void Shader::setBool(const char* name, const bool value) const
+	void shader::set_bool(const char* p_Name, const bool p_Value) const
 	{
-		glUniform1i(glGetUniformLocation(id, name), (int)value);
+		glUniform1i(glGetUniformLocation(m_Id, p_Name), (int)p_Value);
 	}
-	void Shader::setInt(const char* name, const int value) const
+	void shader::set_int(const char* p_Name, const int p_Value) const
 	{
-		glUniform1i(glGetUniformLocation(id, name), value);
+		glUniform1i(glGetUniformLocation(m_Id, p_Name), p_Value);
 	}
-	void Shader::setInt(const char* name, const int* value, const int components) const
+	void shader::set_int(const char* p_Name, const int* p_Value, const int p_Components) const
 	{
-		glUniform1iv(glGetUniformLocation(id, name), components, value);
+		glUniform1iv(glGetUniformLocation(m_Id, p_Name), p_Components, p_Value);
 	}
-	void Shader::setFloat(const char* name, const float value) const
+	void shader::set_float(const char* p_Name, const float p_Value) const
 	{
-		glUniform1f(glGetUniformLocation(id, name), value);
+		glUniform1f(glGetUniformLocation(m_Id, p_Name), p_Value);
 	}
-	void Shader::setVec2(const char* name, const glm::vec2& value) const
+	void shader::set_vec2(const char* p_Name, const glm::vec2& p_Value) const
 	{
-		glUniform2fv(glGetUniformLocation(id, name), 1, &value[0]);
+		glUniform2fv(glGetUniformLocation(m_Id, p_Name), 1, &p_Value[0]);
 	}
-	void Shader::setVec3(const char* name, const glm::vec3& value) const
+	void shader::set_vec3(const char* p_Name, const glm::vec3& p_Value) const
 	{
-		glUniform3fv(glGetUniformLocation(id, name), 1, &value[0]);
+		glUniform3fv(glGetUniformLocation(m_Id, p_Name), 1, &p_Value[0]);
 	}
-	void Shader::setVec4(const char* name, const glm::vec4& value) const
+	void shader::set_vec4(const char* p_Name, const glm::vec4& p_Value) const
 	{
-		glUniform4fv(glGetUniformLocation(id, name), 1, &value[0]);
+		glUniform4fv(glGetUniformLocation(m_Id, p_Name), 1, &p_Value[0]);
 	}
-	void Shader::setMat2(const char* name, const glm::mat2& mat) const
+	void shader::set_mat2(const char* p_Name, const glm::mat2& p_Value) const
 	{
-		glUniformMatrix2fv(glGetUniformLocation(id, name), 1, GL_FALSE, &mat[0][0]);
+		glUniformMatrix2fv(glGetUniformLocation(m_Id, p_Name), 1, GL_FALSE, &p_Value[0][0]);
 	}
-	void Shader::setMat3(const char* name, const glm::mat3& mat) const
+	void shader::set_mat3(const char* p_Name, const glm::mat3& p_Value) const
 	{
-		glUniformMatrix3fv(glGetUniformLocation(id, name), 1, GL_FALSE, &mat[0][0]);
+		glUniformMatrix3fv(glGetUniformLocation(m_Id, p_Name), 1, GL_FALSE, &p_Value[0][0]);
 	}
-	void Shader::setMat4(const char* name, const float* value) const
+	void shader::set_mat4(const char* p_Name, const float* p_Value) const
 	{
-		glUniformMatrix4fv(glGetUniformLocation(id, name), 1, GL_FALSE, value);
+		glUniformMatrix4fv(glGetUniformLocation(m_Id, p_Name), 1, GL_FALSE, p_Value);
 	}
 
-	void Shader::createShader(const char* vertPath, const char* fragPath)
+	void shader::create_shader(const char* p_VertPath, const char* p_FragPath)
 	{
 		unsigned int vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
 		unsigned int fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
@@ -80,8 +80,8 @@ namespace opengl
 		std::ifstream vertStream;
 		std::ifstream fragStream;
 
-		vertStream.open(vertPath);
-		fragStream.open(fragPath);
+		vertStream.open(p_VertPath);
+		fragStream.open(p_FragPath);
 
 		std::stringstream vertSource;
 		std::stringstream fragSource;
@@ -121,15 +121,15 @@ namespace opengl
 			// ENGINE_LOG_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n {}\n", infoLog);
 		}
 
-		id = glCreateProgram();
-		glAttachShader(id, vertexShaderId);
-		glAttachShader(id, fragmentShaderId);
-		glLinkProgram(id);
+		m_Id = glCreateProgram();
+		glAttachShader(m_Id, vertexShaderId);
+		glAttachShader(m_Id, fragmentShaderId);
+		glLinkProgram(m_Id);
 
-		glGetProgramiv(id, GL_LINK_STATUS, &success);
+		glGetProgramiv(m_Id, GL_LINK_STATUS, &success);
 		if (!success)
 		{
-			glGetProgramInfoLog(id, 512, NULL, infoLog);
+			glGetProgramInfoLog(m_Id, 512, NULL, infoLog);
 			// ENGINE_LOG_ERROR("ERROR::SHADER::LINKING_FAILED\n {}\n", infoLog);
 		}
 

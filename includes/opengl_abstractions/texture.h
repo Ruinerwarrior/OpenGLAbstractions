@@ -5,108 +5,108 @@
 
 namespace opengl
 {
-	class Texture
+	class texture
 	{
 	public:
-		enum Target
+		enum target
 		{
-			TARGET_TEXTURE_2D = GL_TEXTURE_2D,
-			TARGET_PROXY_TEXTURE_2D = GL_PROXY_TEXTURE_2D,
-			TARGET_TEXTURE_1D_ARRAY = GL_TEXTURE_1D_ARRAY,
-			TARGET_PROXY_TEXTURE_1D_ARRAY = GL_PROXY_TEXTURE_1D_ARRAY,
-			TARGET_TEXTURE_RECTANGLE = GL_TEXTURE_RECTANGLE,
-			TARGET_PROXY_TEXTURE_RECTANGLE = GL_PROXY_TEXTURE_RECTANGLE,
-			TARGET_TEXTURE_CUBE_MAP_POSITIVE_X = GL_TEXTURE_CUBE_MAP_POSITIVE_X,
-			TARGET_TEXTURE_CUBE_MAP_NEGATIVE_X = GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
-			TARGET_TEXTURE_CUBE_MAP_POSITIVE_Y = GL_TEXTURE_CUBE_MAP_POSITIVE_Y,
-			TARGET_TEXTURE_CUBE_MAP_NEGATIVE_Y = GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
-			TARGET_TEXTURE_CUBE_MAP_POSITIVE_Z = GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
-			TARGET_TEXTURE_CUBE_MAP_NEGATIVE_Z = GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
+			target_texture_2d = GL_TEXTURE_2D,
+			target_proxy_texture_2d = GL_PROXY_TEXTURE_2D,
+			target_texture_1d_array = GL_TEXTURE_1D_ARRAY,
+			target_proxy_texture_1d_array = GL_PROXY_TEXTURE_1D_ARRAY,
+			target_texture_rectangle = GL_TEXTURE_RECTANGLE,
+			target_proxy_texture_rectangle = GL_PROXY_TEXTURE_RECTANGLE,
+			target_texture_cube_map_positive_x = GL_TEXTURE_CUBE_MAP_POSITIVE_X,
+			target_texture_cube_map_negative_x = GL_TEXTURE_CUBE_MAP_NEGATIVE_X,
+			target_texture_cube_map_positive_y = GL_TEXTURE_CUBE_MAP_POSITIVE_Y,
+			target_texture_cube_map_negative_y = GL_TEXTURE_CUBE_MAP_NEGATIVE_Y,
+			target_texture_cube_map_positive_z = GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
+			target_texture_cube_map_negative_z = GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
 		};
-		enum TexParam
+		enum tex_param
 		{
-			TEX_PARAM_TEXTURE_WRAP_S = GL_TEXTURE_WRAP_S,
-			TEX_PARAM_TEXTURE_WRAP_T = GL_TEXTURE_WRAP_T,
-			TEX_PARAM_TEXTURE_MAG_FILTER = GL_TEXTURE_MAG_FILTER,
-			TEX_PARAM_TEXTURE_MIN_FILTER = GL_TEXTURE_MIN_FILTER
+			tex_param_texture_wrap_s = GL_TEXTURE_WRAP_S,
+			tex_param_texture_wrap_t = GL_TEXTURE_WRAP_T,
+			tex_param_texture_mag_filter = GL_TEXTURE_MAG_FILTER,
+			tex_param_texture_min_filter = GL_TEXTURE_MIN_FILTER
 		};
-		enum TexParamValue
+		enum tex_param_value
 		{
-			TEX_PARAM_VALUE_REPEAT = GL_REPEAT,
-			TEX_PARAM_VALUE_LINEAR = GL_LINEAR,
-			TEX_PARAM_VALUE_CLAMP_TO_EDGE = GL_CLAMP_TO_EDGE,
-			TEX_PARAM_VALUE_LINEAR_MIPMAP_LINEAR = GL_LINEAR_MIPMAP_LINEAR
+			tex_param_value_repeat = GL_REPEAT,
+			tex_param_value_linear = GL_LINEAR,
+			tex_param_value_clamp_to_edge = GL_CLAMP_TO_EDGE,
+			tex_param_value_linear_mipmap_linear = GL_LINEAR_MIPMAP_LINEAR
 		};
-		enum InteralFormat
+		enum interal_format
 		{
-			INTERNAL_FORMAT_DEPTH_COMPONENT = GL_DEPTH_COMPONENT,
-			INTERNAL_FORMAT_DEPTH_STENCIL = GL_DEPTH_STENCIL,
-			INTERNAL_FORMAT_RED = GL_RED,
-			INTERNAL_FORMAT_RG = GL_RG,
-			INTERNAL_FORMAT_RGB = GL_RGB,
-			INTERNAL_FORMAT_RGBA = GL_RGBA
+			internal_format_depth_component = GL_DEPTH_COMPONENT,
+			internal_format_depth_stencil = GL_DEPTH_STENCIL,
+			internal_format_red = GL_RED,
+			internal_format_rg = GL_RG,
+			internal_format_rgb = GL_RGB,
+			internal_format_rgba = GL_RGBA
 		};
-		enum Format
+		enum format
 		{
-			FORMAT_RED = GL_RED,
-			FORMAT_RG = GL_RG,
-			FORMAT_RGB = GL_RGB,
-			FORMAT_BGR = GL_BGR,
-			FORMAT_RGBA = GL_RGBA,
-			FORMAT_BGRA = GL_BGRA,
-			FORMAT_RED_INTEGER = GL_RED_INTEGER,
-			FORMAT_RG_INTEGER = GL_RG_INTEGER,
-			FORMAT_RGB_INTEGER = GL_RGB_INTEGER,
-			FORMAT_BGR_INTEGER = GL_BGR_INTEGER,
-			FORMAT_RGBA_INTEGER = GL_RGBA_INTEGER,
-			FORMAT_BGRA_INTEGER = GL_BGRA_INTEGER,
-			FORMAT_STENCIL_INDEX = GL_STENCIL_INDEX,
-			FORMAT_DEPTH_COMPONENT = GL_DEPTH_COMPONENT,
-			FORMAT_DEPTH_STENCIL = GL_DEPTH_STENCIL
+			format_red = GL_RED,
+			format_rg = GL_RG,
+			format_rgb = GL_RGB,
+			format_bgr = GL_BGR,
+			format_rgba = GL_RGBA,
+			format_bgra = GL_BGRA,
+			format_red_integer = GL_RED_INTEGER,
+			format_rg_integer = GL_RG_INTEGER,
+			format_rgb_integer = GL_RGB_INTEGER,
+			format_bgr_integer = GL_BGR_INTEGER,
+			format_rgba_integer = GL_RGBA_INTEGER,
+			format_bgra_integer = GL_BGRA_INTEGER,
+			format_stencil_index = GL_STENCIL_INDEX,
+			format_depth_component = GL_DEPTH_COMPONENT,
+			format_depth_stencil = GL_DEPTH_STENCIL
 		};
-		enum PixelType
+		enum pixel_type
 		{
-			PIXELTYPE_UNSIGNED_BYTE = GL_UNSIGNED_BYTE,
-			PIXELTYPE_BYTE = GL_BYTE,
-			PIXELTYPE_UNSIGNED_SHORT = GL_UNSIGNED_SHORT,
-			PIXELTYPE_SHORT = GL_SHORT,
-			PIXELTYPE_UNSIGNED_INT = GL_UNSIGNED_INT,
-			PIXELTYPE_INT = GL_INT,
-			PIXELTYPE_FLOAT = GL_FLOAT,
-			PIXELTYPE_UNSIGNED_BYTE_3_3_2 = GL_UNSIGNED_BYTE_3_3_2,
-			PIXELTYPE_UNSIGNED_BYTE_2_3_3_REV = GL_UNSIGNED_BYTE_2_3_3_REV,
-			PIXELTYPE_UNSIGNED_SHORT_5_6_5 = GL_UNSIGNED_SHORT_5_6_5,
-			PIXELTYPE_UNSIGNED_SHORT_5_6_5_REV = GL_UNSIGNED_SHORT_5_6_5_REV,
-			PIXELTYPE_UNSIGNED_SHORT_4_4_4_4 = GL_UNSIGNED_SHORT_4_4_4_4,
-			PIXELTYPE_UNSIGNED_SHORT_4_4_4_4_REV = GL_UNSIGNED_SHORT_4_4_4_4_REV,
-			PIXELTYPE_UNSIGNED_SHORT_5_5_5_1 = GL_UNSIGNED_SHORT_5_5_5_1,
-			PIXELTYPE_UNSIGNED_SHORT_1_5_5_5_REV = GL_UNSIGNED_SHORT_1_5_5_5_REV,
-			PIXELTYPE_UNSIGNED_INT_8_8_8_8 = GL_UNSIGNED_INT_8_8_8_8,
-			PIXELTYPE_UNSIGNED_INT_8_8_8_8_REV = GL_UNSIGNED_INT_8_8_8_8_REV,
-			PIXELTYPE_UNSIGNED_INT_10_10_10_2 = GL_UNSIGNED_INT_10_10_10_2,
-			PIXELTYPE_UNSIGNED_INT_2_10_10_10_REV = GL_UNSIGNED_INT_2_10_10_10_REV
+			pixeltype_unsigned_byte = GL_UNSIGNED_BYTE,
+			pixeltype_byte = GL_BYTE,
+			pixeltype_unsigned_short = GL_UNSIGNED_SHORT,
+			pixeltype_short = GL_SHORT,
+			pixeltype_unsigned_int = GL_UNSIGNED_INT,
+			pixeltype_int = GL_INT,
+			pixeltype_float = GL_FLOAT,
+			pixeltype_unsigned_byte_3_3_2 = GL_UNSIGNED_BYTE_3_3_2,
+			pixeltype_unsigned_byte_2_3_3_rev = GL_UNSIGNED_BYTE_2_3_3_REV,
+			pixeltype_unsigned_short_5_6_5 = GL_UNSIGNED_SHORT_5_6_5,
+			pixeltype_unsigned_short_5_6_5_rev = GL_UNSIGNED_SHORT_5_6_5_REV,
+			pixeltype_unsigned_short_4_4_4_4 = GL_UNSIGNED_SHORT_4_4_4_4,
+			pixeltype_unsigned_short_4_4_4_4_rev = GL_UNSIGNED_SHORT_4_4_4_4_REV,
+			pixeltype_unsigned_short_5_5_5_1 = GL_UNSIGNED_SHORT_5_5_5_1,
+			pixeltype_unsigned_short_1_5_5_5_rev = GL_UNSIGNED_SHORT_1_5_5_5_REV,
+			pixeltype_unsigned_int_8_8_8_8 = GL_UNSIGNED_INT_8_8_8_8,
+			pixeltype_unsigned_int_8_8_8_8_rev = GL_UNSIGNED_INT_8_8_8_8_REV,
+			pixeltype_unsigned_int_10_10_10_2 = GL_UNSIGNED_INT_10_10_10_2,
+			pixeltype_unsigned_int_2_10_10_10_rev = GL_UNSIGNED_INT_2_10_10_10_REV
 		};
 
 	public:
-		Texture();
-		Texture(const int color, const int width = 1, const int height = 1);
-		Texture(const char* imagePath);
-		Texture(const Target target, const int level, const InteralFormat internalFormat, const int width, int height, const int border, const Format format, const PixelType type, void* data);
-		~Texture();
+		texture();
+		texture(const int p_Color, const int p_Width = 1, const int p_Height = 1);
+		texture(const char* p_ImagePath);
+		texture(const target p_Target, const int p_Level, const interal_format p_InternalFormat, const int p_Width, int p_Height, const int p_Border, const format p_Format, const pixel_type p_Type, void* p_Data);
+		~texture();
 
 		void bind() const;
-		void unBind() const;
-		void bindToUnit(const int unit) const;
+		void un_bind() const;
+		void bind_to_unit(const int p_Unit) const;
 
-		void genMipMaps() const;
-		void setParameter(TexParam param, TexParamValue value) const;
+		void gen_mipmaps() const;
+		void set_parameter(tex_param p_Param, tex_param_value p_Value) const;
 
-		const inline unsigned int getId() const { return id; };
+		const inline unsigned int get_id() const { return m_Id; };
 
-		static void bindUnit(unsigned int id, unsigned short int unit);
+		static void bind_unit(unsigned int p_Id, unsigned short int p_Unit);
 	private:
-		unsigned int id;
-		int width, height;
+		unsigned int m_Id;
+		int m_Width, m_Height;
 	};
 }
 

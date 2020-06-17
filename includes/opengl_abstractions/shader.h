@@ -10,31 +10,31 @@
 
 namespace opengl
 {
-	class Shader
+	class shader
 	{
 	public:
-		Shader(const char* vertPath, const char* fragPath);
-		~Shader();
+		shader(const char* p_VertPath, const char* p_FragPath);
+		~shader();
 
 		void use() const;
-		void unUse() const;
+		void un_use() const;
 
-		void setBool(const char* name, const bool value) const;
-		void setInt(const char* name, const int value) const;
-		void setInt(const char* name, const int* value, int components) const;
-		void setFloat(const char* name, const float value) const;
-		void setVec2(const char* name, const glm::vec2& value) const;
-		void setVec3(const char* name, const glm::vec3& value) const;
-		void setVec4(const char* name, const glm::vec4& value) const;
-		void setMat2(const char* name, const glm::mat2& mat) const;
-		void setMat3(const char* name, const glm::mat3& mat) const;
-		void setMat4(const char* name, const float* value) const;
-
-	private:
-		void createShader(const char* vertPath, const char* fragPath);
+		void set_bool(const char* p_Name, const bool p_Value) const;
+		void set_int(const char* p_Name, const int p_Value) const;
+		void set_int(const char* p_Name, const int* p_Value, int components) const;
+		void set_float(const char* p_Name, const float p_Value) const;
+		void set_vec2(const char* p_Name, const glm::vec2& p_Value) const;
+		void set_vec3(const char* p_Name, const glm::vec3& p_Value) const;
+		void set_vec4(const char* p_Name, const glm::vec4& p_Value) const;
+		void set_mat2(const char* p_Name, const glm::mat2& p_Value) const;
+		void set_mat3(const char* p_Name, const glm::mat3& p_Value) const;
+		void set_mat4(const char* p_Name, const float* p_Value) const;
 
 	private:
-		unsigned int id;
+		void create_shader(const char* p_VertPath, const char* p_FragPath);
+
+	private:
+		unsigned int m_Id;
 	};
 }
 

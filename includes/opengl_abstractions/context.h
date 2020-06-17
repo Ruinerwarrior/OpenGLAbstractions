@@ -5,75 +5,75 @@
 
 namespace opengl
 {
-	class Context 
+	class context 
 	{
 	public:
-		enum Settings
+		enum settings
 		{
-			SETTINGS_BLEND = GL_BLEND,
-			SETTINGS_DEPTH_TEST = GL_DEPTH_TEST,
-			SETTINGS_MULTISAMPLE = GL_MULTISAMPLE,
-			SETTINGS_DEBUG_OUTPUT = GL_DEBUG_OUTPUT,
-			SETTINGS_DEBUG_OUTPUT_SYNCHRONOUS = GL_DEBUG_OUTPUT_SYNCHRONOUS
+			settings_blend = GL_BLEND,
+			settings_depth_test = GL_DEPTH_TEST,
+			settings_multisample = GL_MULTISAMPLE,
+			settings_debug_output = GL_DEBUG_OUTPUT,
+			settings_debug_output_synchronous = GL_DEBUG_OUTPUT_SYNCHRONOUS
 		};
 
-		enum Clear
+		enum mask
 		{
-			CLEAR_COLOR_BUFFER_BIT = GL_COLOR_BUFFER_BIT,
-			CLEAR_DEPTH_BUFFER_BIT = GL_DEPTH_BUFFER_BIT,
-			CLEAR_STENCIL_BUFFER_BIT = GL_STENCIL_BUFFER_BIT
+			clear_color_buffer_bit = GL_COLOR_BUFFER_BIT,
+			clear_depth_buffer_bit = GL_DEPTH_BUFFER_BIT,
+			clear_stencil_buffer_bit = GL_STENCIL_BUFFER_BIT
 		};
 
-		enum Mode
+		enum mode
 		{
-			MODE_POINTS = GL_POINTS, 
-			MODE_LINE_STRIP = GL_LINE_STRIP, 
-			MODE_LINE_LOOP = GL_LINE_LOOP, 
-			MODE_LINES = GL_LINES, 
-			MODE_LINE_STRIP_ADJACENCY = GL_LINE_STRIP_ADJACENCY, 
-			MODE_LINES_ADJACENCY = GL_LINES_ADJACENCY, 
-			MODE_TRIANGLE_STRIP = GL_TRIANGLE_STRIP, 
-			MODE_TRIANGLE_FAN = GL_TRIANGLE_FAN, 
-			MODE_TRIANGLES = GL_TRIANGLES, 
-			MODE_TRIANGLE_STRIP_ADJACENCY = GL_TRIANGLE_STRIP_ADJACENCY,
-			MODE_TRIANGLES_ADJACENCY = GL_TRIANGLES_ADJACENCY
+			mode_points = GL_POINTS, 
+			mode_line_strip = GL_LINE_STRIP, 
+			mode_line_loop = GL_LINE_LOOP, 
+			mode_lines = GL_LINES, 
+			mode_line_strip_adjacency = GL_LINE_STRIP_ADJACENCY, 
+			mode_lines_adjacency = GL_LINES_ADJACENCY, 
+			mode_triangle_strip = GL_TRIANGLE_STRIP, 
+			mode_triangle_fan = GL_TRIANGLE_FAN, 
+			mode_triangles = GL_TRIANGLES, 
+			mode_triangle_strip_adjacency = GL_TRIANGLE_STRIP_ADJACENCY,
+			mode_triangles_adjacency = GL_TRIANGLES_ADJACENCY
 		};
 
-		enum Type
+		enum type
 		{
-			TYPE_UNSIGNED_BYTE = GL_UNSIGNED_BYTE,
-			TYPE_UNSIGNED_SHORT = GL_UNSIGNED_SHORT,
-			TYPE_UNSIGNED_INT = GL_UNSIGNED_INT
+			type_unsigned_byte = GL_UNSIGNED_BYTE,
+			type_unsigned_short = GL_UNSIGNED_SHORT,
+			type_unsigned_int = GL_UNSIGNED_INT
 		};
 
-		enum Factor
+		enum factor
 		{
-			FACTOR_ZERO = GL_ZERO, 
-			FACTOR_ONE = GL_ONE, 
-			FACTOR_SRC_COLOR = GL_SRC_COLOR, 
-			FACTOR_ONE_MINUS_SRC_COLOR = GL_ONE_MINUS_SRC_COLOR, 
-			FACTOR_DST_COLOR = GL_DST_COLOR, 
-			FACTOR_ONE_MINUS_DST_COLOR = GL_ONE_MINUS_DST_COLOR,
-			FACTOR_SRC_ALPHA = GL_SRC_ALPHA,
-			FACTOR_ONE_MINUS_SRC_ALPHA = GL_ONE_MINUS_SRC_ALPHA,
-			FACTOR_DST_ALPHA = GL_DST_ALPHA,
-			FACTOR_ONE_MINUS_DST_ALPHA = GL_ONE_MINUS_DST_ALPHA,
-			FACTOR_CONSTANT_COLOR = GL_CONSTANT_COLOR,
-			FACTOR_ONE_MINUS_CONSTANT_COLOR = GL_ONE_MINUS_CONSTANT_COLOR,
-			FACTOR_CONSTANT_ALPHA = GL_CONSTANT_ALPHA,
-			FACTOR_ONE_MINUS_CONSTANT_ALPHA = GL_ONE_MINUS_CONSTANT_ALPHA
+			factor_zero = GL_ZERO, 
+			factor_one = GL_ONE, 
+			factor_src_color = GL_SRC_COLOR, 
+			factor_one_minus_src_color = GL_ONE_MINUS_SRC_COLOR, 
+			factor_dst_color = GL_DST_COLOR, 
+			factor_one_minus_dst_color = GL_ONE_MINUS_DST_COLOR,
+			factor_src_alpha = GL_SRC_ALPHA,
+			factor_one_minus_src_alpha = GL_ONE_MINUS_SRC_ALPHA,
+			factor_dst_alpha = GL_DST_ALPHA,
+			factor_one_minus_dst_alpha = GL_ONE_MINUS_DST_ALPHA,
+			factor_constant_color = GL_CONSTANT_COLOR,
+			factor_one_minus_constant_color = GL_ONE_MINUS_CONSTANT_COLOR,
+			factor_constant_alpha = GL_CONSTANT_ALPHA,
+			factor_one_minus_constant_alpha = GL_ONE_MINUS_CONSTANT_ALPHA
 		};
 
 	public:
-		static void clear(const int clear);
-		static void clear(const Clear clear);
-		static void clearColor(const float r, const float g, const float b, const float a);
-		static void setViewPort(const unsigned int x, const unsigned int y, const unsigned int width, const unsigned int height);
-		static void enable(const Settings setting);
-		static void disable(const Settings setting);
-		static void blendFunc(const Factor sfactor, const Factor dfactor);
-		static void draw(const Mode mode, const unsigned int count, const Type type, const void* offset);
-		static void enableDebug();
+		static void clear(const int p_Clear);
+		static void clear(const mask p_Clear);
+		static void clear_color(const float p_R, const float p_G, const float p_B, const float p_A);
+		static void set_viewport(const unsigned int p_X, const unsigned int p_Y, const unsigned int p_Width, const unsigned int p_Height);
+		static void enable(const settings p_Setting);
+		static void disable(const settings p_Setting);
+		static void blend_func(const factor p_Sfactor, const factor p_Dfactor);
+		static void draw(const mode p_Mode, const unsigned int p_Count, const type p_Type, const void* p_Offset);
+		static void enable_debug();
 	};
 }
 

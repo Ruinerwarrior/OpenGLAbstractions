@@ -11,12 +11,12 @@ set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/includes/opengl_abstractions")
 set(EXTERN_DIR "${PROJECT_SOURCE_DIR}/extern")
 
 list (APPEND SOURCE_FILES
-	"${SRC_DIR}/Context.cpp"
-	"${SRC_DIR}/VertexBuffer.cpp"
-	"${SRC_DIR}/IndexBuffer.cpp"
-	"${SRC_DIR}/VertexArray.cpp"
-	"${SRC_DIR}/Texture.cpp"
-	"${SRC_DIR}/Shader.cpp"
+	"${SRC_DIR}/context.cpp"
+	"${SRC_DIR}/vertex_buffer.cpp"
+	"${SRC_DIR}/index_buffer.cpp"
+	"${SRC_DIR}/vertex_array.cpp"
+	"${SRC_DIR}/texture.cpp"
+	"${SRC_DIR}/shader.cpp"
 )
 
 message(${CMAKE_CURRENT_LIST_DIR})
