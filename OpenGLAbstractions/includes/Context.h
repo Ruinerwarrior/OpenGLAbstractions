@@ -73,6 +73,7 @@ namespace opengl
 		static void disable(const Settings setting);
 		static void blendFunc(const Factor sfactor, const Factor dfactor);
 		static void draw(const Mode mode, const unsigned int count, const Type type, const void* offset);
+		static void enableDebug();
 	};
 }
 
