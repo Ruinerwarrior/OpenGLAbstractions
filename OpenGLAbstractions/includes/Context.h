@@ -46,12 +46,32 @@ namespace opengl
 			TYPE_UNSIGNED_INT = GL_UNSIGNED_INT
 		};
 
+		enum Factor
+		{
+			FACTOR_ZERO = GL_ZERO, 
+			FACTOR_ONE = GL_ONE, 
+			FACTOR_SRC_COLOR = GL_SRC_COLOR, 
+			FACTOR_ONE_MINUS_SRC_COLOR = GL_ONE_MINUS_SRC_COLOR, 
+			FACTOR_DST_COLOR = GL_DST_COLOR, 
+			FACTOR_ONE_MINUS_DST_COLOR = GL_ONE_MINUS_DST_COLOR,
+			FACTOR_SRC_ALPHA = GL_SRC_ALPHA,
+			FACTOR_ONE_MINUS_SRC_ALPHA = GL_ONE_MINUS_SRC_ALPHA,
+			FACTOR_DST_ALPHA = GL_DST_ALPHA,
+			FACTOR_ONE_MINUS_DST_ALPHA = GL_ONE_MINUS_DST_ALPHA,
+			FACTOR_CONSTANT_COLOR = GL_CONSTANT_COLOR,
+			FACTOR_ONE_MINUS_CONSTANT_COLOR = GL_ONE_MINUS_CONSTANT_COLOR,
+			FACTOR_CONSTANT_ALPHA = GL_CONSTANT_ALPHA,
+			FACTOR_ONE_MINUS_CONSTANT_ALPHA = GL_ONE_MINUS_CONSTANT_ALPHA
+		};
+
 	public:
+		static void clear(const int clear);
 		static void clear(const Clear clear);
 		static void clearColor(const float r, const float g, const float b, const float a);
 		static void setViewPort(const unsigned int x, const unsigned int y, const unsigned int width, const unsigned int height);
 		static void enable(const Settings setting);
 		static void disable(const Settings setting);
+		static void blendFunc(const Factor sfactor, const Factor dfactor);
 		static void draw(const Mode mode, const unsigned int count, const Type type, const void* offset);
 	};
 }

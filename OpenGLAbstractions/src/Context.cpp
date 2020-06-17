@@ -2,6 +2,11 @@
 
 namespace opengl
 {
+	void Context::clear(const int clear)
+	{
+		glClear(clear);
+	}
+
 	void Context::clear(const Clear clear)
 	{
 		glClear(clear);
@@ -25,6 +30,11 @@ namespace opengl
 	void Context::disable(const Settings setting)
 	{
 		glDisable(setting);
+	}
+
+	void Context::blendFunc(const Factor sfactor, const Factor dfactor)
+	{
+		glBlendFunc(sfactor, dfactor);
 	}
 
 	void Context::draw(const Mode mode, const unsigned int count, const Type type, const void* offset)
