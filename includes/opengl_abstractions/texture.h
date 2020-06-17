@@ -66,25 +66,25 @@ namespace opengl
 		};
 		enum pixel_type
 		{
-			pixeltype_unsigned_byte = GL_UNSIGNED_BYTE,
-			pixeltype_byte = GL_BYTE,
-			pixeltype_unsigned_short = GL_UNSIGNED_SHORT,
-			pixeltype_short = GL_SHORT,
-			pixeltype_unsigned_int = GL_UNSIGNED_INT,
-			pixeltype_int = GL_INT,
-			pixeltype_float = GL_FLOAT,
-			pixeltype_unsigned_byte_3_3_2 = GL_UNSIGNED_BYTE_3_3_2,
-			pixeltype_unsigned_byte_2_3_3_rev = GL_UNSIGNED_BYTE_2_3_3_REV,
-			pixeltype_unsigned_short_5_6_5 = GL_UNSIGNED_SHORT_5_6_5,
-			pixeltype_unsigned_short_5_6_5_rev = GL_UNSIGNED_SHORT_5_6_5_REV,
-			pixeltype_unsigned_short_4_4_4_4 = GL_UNSIGNED_SHORT_4_4_4_4,
-			pixeltype_unsigned_short_4_4_4_4_rev = GL_UNSIGNED_SHORT_4_4_4_4_REV,
-			pixeltype_unsigned_short_5_5_5_1 = GL_UNSIGNED_SHORT_5_5_5_1,
-			pixeltype_unsigned_short_1_5_5_5_rev = GL_UNSIGNED_SHORT_1_5_5_5_REV,
-			pixeltype_unsigned_int_8_8_8_8 = GL_UNSIGNED_INT_8_8_8_8,
-			pixeltype_unsigned_int_8_8_8_8_rev = GL_UNSIGNED_INT_8_8_8_8_REV,
-			pixeltype_unsigned_int_10_10_10_2 = GL_UNSIGNED_INT_10_10_10_2,
-			pixeltype_unsigned_int_2_10_10_10_rev = GL_UNSIGNED_INT_2_10_10_10_REV
+			pixel_type_unsigned_byte = GL_UNSIGNED_BYTE,
+			pixel_type_byte = GL_BYTE,
+			pixel_type_unsigned_short = GL_UNSIGNED_SHORT,
+			pixel_type_short = GL_SHORT,
+			pixel_type_unsigned_int = GL_UNSIGNED_INT,
+			pixel_type_int = GL_INT,
+			pixel_type_float = GL_FLOAT,
+			pixel_type_unsigned_byte_3_3_2 = GL_UNSIGNED_BYTE_3_3_2,
+			pixel_type_unsigned_byte_2_3_3_rev = GL_UNSIGNED_BYTE_2_3_3_REV,
+			pixel_type_unsigned_short_5_6_5 = GL_UNSIGNED_SHORT_5_6_5,
+			pixel_type_unsigned_short_5_6_5_rev = GL_UNSIGNED_SHORT_5_6_5_REV,
+			pixel_type_unsigned_short_4_4_4_4 = GL_UNSIGNED_SHORT_4_4_4_4,
+			pixel_type_unsigned_short_4_4_4_4_rev = GL_UNSIGNED_SHORT_4_4_4_4_REV,
+			pixel_type_unsigned_short_5_5_5_1 = GL_UNSIGNED_SHORT_5_5_5_1,
+			pixel_type_unsigned_short_1_5_5_5_rev = GL_UNSIGNED_SHORT_1_5_5_5_REV,
+			pixel_type_unsigned_int_8_8_8_8 = GL_UNSIGNED_INT_8_8_8_8,
+			pixel_type_unsigned_int_8_8_8_8_rev = GL_UNSIGNED_INT_8_8_8_8_REV,
+			pixel_type_unsigned_int_10_10_10_2 = GL_UNSIGNED_INT_10_10_10_2,
+			pixel_type_unsigned_int_2_10_10_10_rev = GL_UNSIGNED_INT_2_10_10_10_REV
 		};
 
 	public:
