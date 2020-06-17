@@ -1,4 +1,4 @@
-#include "../includes/IndexBuffer.h"
+#include "../includes/opengl_abstractions/IndexBuffer.h"
 
 namespace opengl
 {

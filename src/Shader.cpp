@@ -1,4 +1,4 @@
-#include "../includes/Shader.h"
+#include "../includes/opengl_abstractions/Shader.h"
 
 #include <glad/glad.h>
 

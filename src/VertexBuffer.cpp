@@ -1,4 +1,4 @@
-#include "../includes/VertexBuffer.h"
+#include "../includes/opengl_abstractions/VertexBuffer.h"
 
 namespace opengl
 {

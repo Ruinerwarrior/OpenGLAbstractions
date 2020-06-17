@@ -1,4 +1,4 @@
-#include "../includes/VertexArray.h"
+#include "../includes/opengl_abstractions/VertexArray.h"
 
 namespace opengl
 {

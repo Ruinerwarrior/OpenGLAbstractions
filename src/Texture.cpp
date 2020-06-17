@@ -1,4 +1,4 @@
-#include "../includes/Texture.h"
+#include "../includes/opengl_abstractions/Texture.h"
 
 #include <stbimage/stb_image.h>
 
