@@ -6,9 +6,9 @@ cmake_minimum_required (VERSION 3.8)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SRC_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/src")
-set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/includes")
-set(EXTERN_DIR "${PROJECT_SOURCE_DIR}/OpenGLAbstractions/extern")
+set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
+set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/includes")
+set(EXTERN_DIR "${PROJECT_SOURCE_DIR}/extern")
 
 list (APPEND SOURCE_FILES
 	"${SRC_DIR}/Context.cpp"
@@ -24,7 +24,7 @@ message(${CMAKE_CURRENT_LIST_DIR})
 # Add source to this project's library.
 add_library(OpenGLAbstractions STATIC ${SOURCE_FILES})
 
-target_include_directories(OpenGLAbstractions PUBLIC "${CMAKE_CURRENT_LIST_DIR}/includes")
+target_include_directories(OpenGLAbstractions PUBLIC "${INCLUDE_DIR}/includes")
 
 # Add dependencies
 
@@ -38,19 +38,15 @@ target_link_libraries(OpenGLAbstractions ${OpenGL})
 # ADD GLAD LIBRARY DEPENDENCY
 #----------------------------------------------
 target_link_libraries(OpenGLAbstractions glad)
-include_directories(OpenGLAbstractions PUBLIC "${PROJECT_SOURCE_DIR}/glad/include")
+include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/glad/include")
 
 #----------------------------------------------
 # ADD STB_IMAGE LIBRARY DEPENDENCY
 #----------------------------------------------
 target_link_libraries(OpenGLAbstractions stbimage)
-target_include_directories(OpenGLAbstractions PUBLIC "${PROJECT_SOURCE_DIR}")
-#add_library("stb_image" "${EXTERN_DIR}/stbimage/stb_image.cpp")
-#target_include_directories("stb_image" PRIVATE "${EXTERN_DIR}/stb_image")
-#target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}/stb_image")
-#target_link_libraries(OpenGLAbstractions "stb_image" "${CMAKE_DL_LIBS}")
-#
+target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}")
+
 #---------------------------------------------
 # ADD GLM LIBRARY DEPENDENCY
 # --------------------------------------------
-target_include_directories(OpenGLAbstractions PUBLIC "${PROJECT_SOURCE_DIR}")
+target_include_directories(OpenGLAbstractions PUBLIC "${EXTERN_DIR}")
