@@ -65,14 +65,14 @@ namespace opengl
 		};
 
 	public:
-		static void clear(const int p_Clear);
-		static void clear(const mask p_Clear);
-		static void clear_color(const float p_R, const float p_G, const float p_B, const float p_A);
-		static void set_viewport(const unsigned int p_X, const unsigned int p_Y, const unsigned int p_Width, const unsigned int p_Height);
-		static void enable(const settings p_Setting);
-		static void disable(const settings p_Setting);
-		static void blend_func(const factor p_Sfactor, const factor p_Dfactor);
-		static void draw(const mode p_Mode, const unsigned int p_Count, const type p_Type, const void* p_Offset);
+		static void clear(const int p_clear);
+		static void clear(const mask p_clear);
+		static void clear_color(const float p_r, const float p_g, const float p_b, const float p_a);
+		static void set_viewport(const unsigned int p_x, const unsigned int p_y, const unsigned int p_width, const unsigned int p_height);
+		static void enable(const settings p_setting);
+		static void disable(const settings p_setting);
+		static void blend_func(const factor p_sFactor, const factor p_dFactor);
+		static void draw(const mode p_mode, const unsigned int p_count, const type p_type, const void* p_offset);
 		static void enable_debug();
 	};
 }

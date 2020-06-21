@@ -7,3 +7,6 @@ project ("OpenGLAbstractions")
 
 # Include sub-projects.
 add_subdirectory ("src")
+add_subdirectory("extern/glad")
+add_subdirectory("extern/glm")
+add_subdirectory("extern/stbimage")

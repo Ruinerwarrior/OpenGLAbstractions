@@ -8,33 +8,35 @@ namespace opengl
 	class vertex_array
 	{
 	public:
-		enum type
+		enum class type : GLenum
 		{
 			type_int = GL_INT,
 			type_float = GL_FLOAT
 		};
 	public:
-		vertex_array();
+		vertex_array() = default;
 		~vertex_array();
+
+		void create();
 
 		void bind() const;
 		void un_bind() const;
 
-		template<typename T>
-		void add_attribute(int p_Components, type p_Type, int p_Stride)
+		template<typename t>
+		void add_attribute(const int p_components, const type p_type, const int p_stride)
 		{
-			glVertexAttribPointer(m_Count, p_Components, p_Type, GL_FALSE, p_Stride, (void*)m_Pointer);
-			glEnableVertexAttribArray(m_Count);
-			m_Pointer += (p_Components * sizeof(T));
-			m_Count++;
+			glVertexAttribPointer(m_count, p_components, static_cast<GLenum>(p_type), GL_FALSE, p_stride, (void*)m_pointer);
+			glEnableVertexAttribArray(m_count);
+			m_pointer += (p_components * sizeof(t));
+			m_count++;
 		}
 
-		const inline unsigned int get_id() const { return m_Id; };
+		const inline unsigned int get_id() const { return m_id; };
 
 	private:
-		unsigned int m_Id;
-		int m_Pointer = 0;
-		int m_Count = 0;
+		unsigned int m_id = 0;
+		int m_pointer = 0;
+		int m_count = 0;
 	};
 }
 

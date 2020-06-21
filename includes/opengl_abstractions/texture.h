@@ -8,7 +8,7 @@ namespace opengl
 	class texture
 	{
 	public:
-		enum target
+		enum class target : GLenum
 		{
 			target_texture_2d = GL_TEXTURE_2D,
 			target_proxy_texture_2d = GL_PROXY_TEXTURE_2D,
@@ -23,21 +23,21 @@ namespace opengl
 			target_texture_cube_map_positive_z = GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
 			target_texture_cube_map_negative_z = GL_TEXTURE_CUBE_MAP_NEGATIVE_Z
 		};
-		enum tex_param
+		enum class tex_param : GLenum
 		{
 			tex_param_texture_wrap_s = GL_TEXTURE_WRAP_S,
 			tex_param_texture_wrap_t = GL_TEXTURE_WRAP_T,
 			tex_param_texture_mag_filter = GL_TEXTURE_MAG_FILTER,
 			tex_param_texture_min_filter = GL_TEXTURE_MIN_FILTER
 		};
-		enum tex_param_value
+		enum tex_param_value : GLint
 		{
 			tex_param_value_repeat = GL_REPEAT,
 			tex_param_value_linear = GL_LINEAR,
 			tex_param_value_clamp_to_edge = GL_CLAMP_TO_EDGE,
 			tex_param_value_linear_mipmap_linear = GL_LINEAR_MIPMAP_LINEAR
 		};
-		enum interal_format
+		enum interal_format : GLint
 		{
 			internal_format_depth_component = GL_DEPTH_COMPONENT,
 			internal_format_depth_stencil = GL_DEPTH_STENCIL,
@@ -46,7 +46,7 @@ namespace opengl
 			internal_format_rgb = GL_RGB,
 			internal_format_rgba = GL_RGBA
 		};
-		enum format
+		enum format : GLenum
 		{
 			format_red = GL_RED,
 			format_rg = GL_RG,
@@ -64,7 +64,7 @@ namespace opengl
 			format_depth_component = GL_DEPTH_COMPONENT,
 			format_depth_stencil = GL_DEPTH_STENCIL
 		};
-		enum pixel_type
+		enum pixel_type : GLenum
 		{
 			pixel_type_unsigned_byte = GL_UNSIGNED_BYTE,
 			pixel_type_byte = GL_BYTE,
@@ -88,25 +88,28 @@ namespace opengl
 		};
 
 	public:
-		texture();
-		texture(const int p_Color, const int p_Width = 1, const int p_Height = 1);
-		texture(const char* p_ImagePath);
-		texture(const target p_Target, const int p_Level, const interal_format p_InternalFormat, const int p_Width, int p_Height, const int p_Border, const format p_Format, const pixel_type p_Type, void* p_Data);
+		texture() = default;
 		~texture();
+
+		void create();
+		void create(const int p_color, const int p_width = 1, const int p_height = 1);
+		void create(const char* p_imagepath);
+		void create(const target p_target, const int p_level, const interal_format p_internalformat, const int p_width, int p_height, const int p_border, const format p_format, const pixel_type p_type, void* p_data);
 
 		void bind() const;
 		void un_bind() const;
-		void bind_to_unit(const int p_Unit) const;
+		void bind_to_unit(const int p_unit) const;
 
 		void gen_mipmaps() const;
-		void set_parameter(tex_param p_Param, tex_param_value p_Value) const;
+		void set_parameter(tex_param p_param, tex_param_value p_value) const;
 
-		const inline unsigned int get_id() const { return m_Id; };
+		const inline unsigned int get_id() const { return m_id; };
 
-		static void bind_unit(unsigned int p_Id, unsigned short int p_Unit);
+		static void bind_unit(unsigned int p_id, unsigned short int p_unit);
 	private:
-		unsigned int m_Id;
-		int m_Width, m_Height;
+		unsigned int m_id = 0;
+		int m_width = 0;
+		int m_height = 0;
 	};
 }
 

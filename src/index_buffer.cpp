@@ -2,23 +2,28 @@
 
 namespace opengl
 {
-	index_buffer::index_buffer(const int p_Size, usage p_Usage)
+	index_buffer::~index_buffer()
 	{
-		glGenBuffers(1, &m_Id);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_Size, nullptr, p_Usage);
+		glDeleteBuffers(1, &m_id);
 	}
 
-	index_buffer::index_buffer(const int p_Size, const void* p_Data, usage p_Usage)
+	void index_buffer::create(const size_t p_size, usage p_usage)
 	{
-		glGenBuffers(1, &m_Id);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_Size, p_Data, p_Usage);
+		glGenBuffers(1, &m_id);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_size, nullptr, static_cast<GLenum>(p_usage));
+	}
+
+	void index_buffer::create(const size_t p_size, const void* p_data, usage p_usage)
+	{
+		glGenBuffers(1, &m_id);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, p_size, p_data, static_cast<GLenum>(p_usage));
 	}
 
 	void index_buffer::bind() const
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
 	}
 
 	void index_buffer::un_bind() const
@@ -26,14 +31,9 @@ namespace opengl
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
-	void index_buffer::add_data(const int p_Size, const void* p_Data, usage p_Usage) const
+	void index_buffer::add_data(const size_t p_size, const void* p_data, usage p_usage) const
 	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(p_Data), p_Data, p_Usage);
-	}
-
-	index_buffer::~index_buffer()
-	{
-		glDeleteBuffers(1, &m_Id);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(p_data), p_data, static_cast<GLenum>(p_usage));
 	}
 }

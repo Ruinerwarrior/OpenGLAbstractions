@@ -2,19 +2,19 @@
 
 namespace opengl
 {
-	vertex_array::vertex_array()
-	{
-		glGenVertexArrays(1, &m_Id);
-	}
-
 	vertex_array::~vertex_array()
 	{
-		glDeleteVertexArrays(1, &m_Id);
+		glDeleteVertexArrays(1,  &m_id);
+	}
+
+	void vertex_array::create()
+	{
+		glGenVertexArrays(1, &m_id);
 	}
 
 	void vertex_array::bind() const
 	{
-		glBindVertexArray(m_Id);
+		glBindVertexArray(m_id);
 	}
 
 	void vertex_array::un_bind() const
